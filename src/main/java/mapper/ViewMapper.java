@@ -29,7 +29,9 @@ public class ViewMapper {
 				bvo.setNum(rs.getInt("num"));
 				bvo.setTitle(rs.getString("title"));
 				bvo.setContent(rs.getString("content"));
-				bvo.setWriter(rs.getString("writer"));			
+				bvo.setWriter(rs.getString("writer"));
+				bvo.setRealFileName(rs.getString("realFileName"));
+				bvo.setRealSaveFileName(rs.getString("realSaveFileName"));
 			}
 			
 		} catch (Exception e){

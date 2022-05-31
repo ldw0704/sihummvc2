@@ -6,16 +6,18 @@ import domain.BoardVO;
 
 public class UpdateMapper {
 
-	public void update(BoardVO vo) {
+	public int update(BoardVO vo) {
 
 		//DB저장
 		String url = "jdbc:mysql://localhost:3306/smart?characterEncoding=UTF-8&serverTimezone=Asia/Seoul";
 		String user = "root";
 		String password = "smart";
-		String sql = " UPDATE board SET title = ?, content = ?, writer = ? ";
+		String sql = " UPDATE board SET title = ?, content = ?, writer = ?,realFileName=?, realSaveFileName=? ";
 		sql += " WHERE num = ? ";
 		Connection conn = null;
 		PreparedStatement stmt = null;
+		
+		int res =0;
 		try{
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
@@ -25,9 +27,11 @@ public class UpdateMapper {
 			stmt.setString(1, vo.getTitle());
 			stmt.setString(2, vo.getContent());
 			stmt.setString(3, vo.getWriter());
-			stmt.setInt(4, vo.getNum());
-			
-			stmt.executeUpdate();
+			stmt.setString(4, vo.getRealFileName());
+			stmt.setString(5, vo.getRealSaveFileName());
+			stmt.setInt(6, vo.getNum());
+		
+			res = stmt.executeUpdate();
 		} catch (Exception e){
 			e.getLocalizedMessage();
 		} finally {
@@ -38,7 +42,7 @@ public class UpdateMapper {
 				e.getLocalizedMessage();
 			}
 		}
-		
+		return res;
 	}
 
 }

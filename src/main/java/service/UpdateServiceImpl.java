@@ -6,9 +6,9 @@ import mapper.UpdateMapper;
 public class UpdateServiceImpl implements UpdateService{
 
 	@Override
-	public void update(BoardVO vo) {
+	public int update(BoardVO vo) {
 		UpdateMapper mapper = new UpdateMapper();
-		mapper.update(vo);
+		return mapper.update(vo);
 	}
 
 

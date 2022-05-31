@@ -16,7 +16,8 @@
 </head>
 <body>
 <div class="container">
-	<form method="post" action="writer">
+	<form method="post" action="writer" enctype="multipart/form-data">
+	<!--  첨부파일이 있으면 request를 못받는다. 멀티파트리퀘스트 객체 사용-->
 		<table class="table">
 			<tr>
 				<th>제목</th>
@@ -25,6 +26,10 @@
 			<tr>
 				<th>내용</th>
 				<td><textarea name="content" class="form-control"></textarea></td>
+			</tr>
+			<tr>
+				<th>첨부파일</th>
+				<td><input type="file" name="upfile" class="form-control"></td>
 			</tr>
 			<tr>
 				<th>작성자</th>

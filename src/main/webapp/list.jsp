@@ -65,8 +65,9 @@ String field = (String) request.getAttribute("field");
 			<thead>
 				<tr>
 					<th>글번호</th>
-					<th>제목</th>
+					<th>제목</th>					
 					<th>작성자</th>
+					<th>첨부파일</th>
 					<th>작성일</th>
 				</tr>
 			</thead>
@@ -80,6 +81,18 @@ String field = (String) request.getAttribute("field");
 					<td><%=vo.getNum()%></td>
 					<td><a href="view?num=<%=vo.getNum()%>"><%=vo.getTitle()%></a></td>
 					<td><%=vo.getWriter()%></td>
+				<%
+					if(vo.getRealFileName()!=null)
+					{
+				%>
+					<td><img src='clip.png' style='width:25px;'/></td>
+				<%
+					}else{
+				%>	
+					<td></td>
+				<%	
+					}				
+				%>		
 					<td><%=vo.getWriterDate()%></td>
 				</tr>
 				<%

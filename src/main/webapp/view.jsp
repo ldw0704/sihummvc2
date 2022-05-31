@@ -33,6 +33,10 @@
 			<td><%=vo.getContent() %></td>
 		</tr>
 		<tr>
+			<th>첨부파일</th>
+			<td><a href="download.jsp?rsfn=<%=vo.getRealSaveFileName() %>&rfn=<%=vo.getRealFileName() %>"><%=vo.getRealFileName() %></a></td>
+		</tr>
+		<tr>
 			<th>작성자</th>
 			<td><%=vo.getWriter() %></td>
 		</tr>

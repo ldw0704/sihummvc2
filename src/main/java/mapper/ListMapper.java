@@ -198,6 +198,8 @@ public class ListMapper {
 				vo.setTitle(rs.getString("title"));
 				vo.setWriter(rs.getString("writer"));
 				vo.setWriterDate(rs.getTimestamp("writerDate"));
+				vo.setRealFileName(rs.getString("realFileName"));
+				vo.setRealFileName(rs.getString("realSaveFileName"));
 				list.add(vo);
 			}
 		} catch (Exception e){

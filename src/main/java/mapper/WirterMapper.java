@@ -11,8 +11,8 @@ public class WirterMapper {
 		String url = "jdbc:mysql://localhost:3306/smart?characterEncoding=UTF-8&serverTimezone=Asia/Seoul";
 		String user = "root";
 		String password = "smart";
-		String sql = " INSERT INTO board (title, content, writer, writerDate) ";
-		sql += " VALUES(?, ?, ?, now()) ";
+		String sql = " INSERT INTO board (title, content, writer, writerDate, realFileName, realSaveFileName) ";
+		sql += " VALUES(?, ?, ?, now(),?,?) ";
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		try{
@@ -24,6 +24,10 @@ public class WirterMapper {
 			stmt.setString(1, vo.getTitle());
 			stmt.setString(2, vo.getContent());
 			stmt.setString(3, vo.getWriter());
+			stmt.setString(4, vo.getRealFileName());
+			stmt.setString(5, vo.getRealSaveFileName());
+			
+			
 			stmt.executeUpdate();
 		} catch (Exception e){
 			e.getLocalizedMessage();

@@ -23,8 +23,10 @@
 </head>
 <body>
 <div class="container">
-	<form method="post" action="update">
+	<form method="post" action="update" enctype="multipart/form-data">
 	<input type="hidden" name="num" value="<%=vo.getNum() %>">
+	<input type="hidden" name="realFileName" value="<%=vo.getRealFileName() %>">
+	<input type="hidden" name="realSaveFileName" value="<%=vo.getRealSaveFileName() %>">
 		<table class="table">
 			<tr>
 				<th>제목</th>
@@ -33,6 +35,10 @@
 			<tr>
 				<th>내용</th>
 				<td><textarea name="content" class="form-control"><%=vo.getContent() %></textarea></td>
+			</tr>
+			<tr>
+				<th>첨부파일</th>
+				<td><input type="file" name="upfile" class="form-control" value="" ><div><%=vo.getRealFileName() %></div></td>				
 			</tr>
 			<tr>
 				<th>작성자</th>
