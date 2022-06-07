@@ -85,7 +85,7 @@ String field = (String) request.getAttribute("field");
 					if(vo.getRealFileName()!=null)
 					{
 				%>
-					<td><img src='clip.png' style='width:25px;'/></td>
+					<td><img src='clip.webp' style='width:25px;'/></td>
 				<%
 					}else{
 				%>	

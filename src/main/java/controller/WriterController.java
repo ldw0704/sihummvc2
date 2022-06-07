@@ -39,7 +39,7 @@ public class WriterController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("writer.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("board/writer.jsp");
 		dispatcher.forward(request, response);
 	}
 

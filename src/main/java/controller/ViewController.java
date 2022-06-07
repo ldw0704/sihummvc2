@@ -42,7 +42,7 @@ public class ViewController extends HttpServlet {
 		
 		request.setAttribute("vo", bvo);
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("view.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("board/view.jsp");
 		dispatcher.forward(request, response);
 	}
 

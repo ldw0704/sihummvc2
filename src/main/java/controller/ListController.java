@@ -96,7 +96,7 @@ public class ListController extends HttpServlet {
 //		request.setAttribute("totalRow", totalRow);
 		
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("list.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("board/list.jsp");
 		dispatcher.forward(request, response);
 	}
 

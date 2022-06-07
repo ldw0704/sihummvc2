@@ -49,7 +49,7 @@ public class UpdateController extends HttpServlet {
 		
 		request.setAttribute("vo", bvo);
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("update.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("board/update.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -61,10 +61,10 @@ public class UpdateController extends HttpServlet {
 		//넘어온 값을 변수에 저장
 		
 		request.setCharacterEncoding("UTF-8");
-		String saveFolder = "upload";
-
-		ServletContext context = request.getServletContext();
-		String realFolder = context.getRealPath(saveFolder);
+			String saveFolder = "upload";
+	
+			ServletContext context = request.getServletContext();
+			String realFolder = context.getRealPath(saveFolder);
 		
 		File targetDir = new File(realFolder);
 		if(!targetDir.exists()) {
@@ -81,16 +81,17 @@ public class UpdateController extends HttpServlet {
 		String title = multi.getParameter("title");
 		String content = multi.getParameter("content");
 		String writer = multi.getParameter("writer");
-		String realFileName = multi.getParameter("realFileName");
-		String realSaveFileName = multi.getParameter("realSaveFileName");
+				
 		
-		
-		String newRealFileName = multi.getOriginalFileName("upfile");
-		String newRealSaveFileName = multi.getFilesystemName("upfile");
+		String realFileName = multi.getOriginalFileName("upfile");
+		String realSaveFileName = multi.getFilesystemName("upfile");
 
-		if(newRealFileName==null||"".equals(newRealFileName)) {
-			newRealFileName = realFileName;
-			newRealSaveFileName = realSaveFileName;
+		if(realFileName==null) {
+			realFileName = multi.getParameter("realFileName");;
+			realSaveFileName = multi.getParameter("realSaveFileName");
+		}else {
+			File delFile = new File(realFolder, multi.getParameter("realSaveFileName"));
+			delFile.delete();
 		}
 		
 		BoardVO vo = new BoardVO();
@@ -98,13 +99,12 @@ public class UpdateController extends HttpServlet {
 		vo.setTitle(title);
 		vo.setContent(content);
 		vo.setWriter(writer);
-		vo.setRealFileName(newRealFileName);
-		vo.setRealSaveFileName(newRealSaveFileName);
+		vo.setRealFileName(realFileName);
+		vo.setRealSaveFileName(realSaveFileName);
 		
 		UpdateServiceImpl service = new UpdateServiceImpl();
 		int res = service.update(vo);
-		
-		//Files.deleteIfExists(null);
+				
 		//페이지 이동
 		response.sendRedirect("list");		
 		
